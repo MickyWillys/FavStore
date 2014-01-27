@@ -1,0 +1,6 @@
+http://yahoo.ckdnqknvfm;mail;email;news
+http://yahoo.fm;mail;email
+http://google.com;recherche;pub;bigbrtother
+http://vine.com;video;clip
+http://facebook.com;pub;news
+http://zirrk.com;news;yan;topoftheworld

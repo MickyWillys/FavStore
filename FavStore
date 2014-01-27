@@ -1,0 +1,44 @@
+#!/usr/bin/env ruby
+
+# Si le premier argument est une URL commencant par http://
+if ARGV.first[0,7] == "http://"
+	# on ouvre le fichier FavStoreBox où l'on écrit les favoris
+	f = File.open("FavStoreBox.txt", "a")
+	# Dans le fichier FavStoreBox ouvert, on écrit à la ligne
+	# l'URL qui est le premier argument passé de puis le terminal et contenu dans ARGV
+	f.write ARGV.first
+	# les tags commencent au deuxième argument de ARGV (compteur 1, 0 étant le premier)
+	# pour chaque arguments de ARGV on va mettre un point virgule et la valeur de ARGV[i] qui est le tag
+	# ARGV.count représente le nombre total d'argument passé depuis le terminal et ARGV.count - 1 représente le nombre de tag
+	1.upto ARGV.count do |compteur|
+	#si le comteur est égale a 
+		if compteur== ARGV.count
+			f.puts ARGV[compteur]
+		else
+			f.write ";"
+			f.write ARGV[compteur]		
+		end
+	end
+	puts "url sauvés dans le fichier"
+	puts ARGV.count
+else
+	word = ARGV.first
+
+	if word == "liste" then
+
+		f = File.open("FavStoreBox.txt", "r")
+
+		f.readlines.each do |line|
+		    puts line[0,line.index(";")]
+		end
+
+	else
+		f = File.open("FavStoreBox.txt", "r")
+
+		f.readlines.each do |line|
+		    if line.include?(word)
+		    	puts line[0,line.index(";")]
+			end
+		end
+	end
+end
